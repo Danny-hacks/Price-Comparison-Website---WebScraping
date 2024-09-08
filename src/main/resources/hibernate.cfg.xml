@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- Database connection properties - Driver, URL, user, password -->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/bookmatch?serverTimezone=UTC</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password"/>
+
+        <!-- Connection Pool Size -->
+        <property name="hibernate.connection.pool_size">5</property>
+
+        <!--
+            Specify how Hibernate manages the current session context.
+            Use 'thread' to bind the current session to the thread handling the request.
+        -->
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <!--
+            Show SQL queries in the console (useful for debugging).
+            Disable this in production environments.
+        -->
+        <property name="hibernate.show_sql">true</property>
+
+        <!--
+            Specify the SQL dialect for Hibernate to use.
+            Use MySQLDialect for MySQL database.
+        -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!--
+            Automatically update the database schema based on entity mappings.
+            Note: In production, consider using 'validate' or 'none' instead of 'update'.
+        -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!--
+            Mapping files for Hibernate entities.
+        -->
+        <mapping class="com.bookmatch.models.Books" />
+        <mapping class="com.bookmatch.models.Price" />
+        <mapping class="com.bookmatch.models.ComparePrices" />
+    </session-factory>
+</hibernate-configuration>
